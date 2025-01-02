@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Bills</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            <h1>{{ username }}</h1>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li> 
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Add New Bill</h1>
+        <form action="{{ url_for('bills') }}" method="POST">
+
+            <label for="bill-name">Bill Name:</label>
+            <input type="text" id="bill-name" name="bill_name" required>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+
+            <label for="due-date">Due Date:</label>
+            <input type="date" id="due-date" name="due_date" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <button type="submit">Add Bill</button>
+        </form>
+
+        <h2>List of Bills</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bill Name</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Amount</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in bills %}
+                <tr>
+                    <td>{{ bill.bill_name }}</td>
+                    <td>{{ bill.description }}</td>
+                    <td>{{ bill.due_date }}</td>
+                    <td>{{ bill.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

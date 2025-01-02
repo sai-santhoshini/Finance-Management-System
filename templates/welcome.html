@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERSONAL FINANCE MANAGEMENT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            <h1>Welcome, {{ username }}!</h1>
+            <li><a href="{{ url_for('dashboard') }}" class="active">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li> 
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+</body>
+</html>

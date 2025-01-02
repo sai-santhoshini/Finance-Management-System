@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            <h1>{{ username }}</h1>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li>
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Expense Overview</h1>
+        <div class="content">
+            <div class="bar-graph-section">
+                <div class="bar-graph">
+                    <div class="bar" style="height: {{ expenses_percentage }}%;" title="Expenses: {{ expenses }}"></div>
+                    <div class="bar" style="height: {{ income_percentage }}%;" title="Income: {{ income }}"></div>
+                    <div class="bar" style="height: {{ other_percentage }}%;" title="Other: {{ other }}"></div>
+                </div>
+                <div class="labels">
+                    <span>Expenses</span>
+                    <span>Income</span>
+                    <span>Other</span>
+                </div>
+            </div>
+            <div class="transactions-section">
+                <h2>List of Transactions</h2>
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.account_id }}</td>
+                            <td>{{ "%.2f" % transaction.amount }}</td>
+                            <td>{{ transaction.type }}</td>
+                            <td>{{ transaction.category }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

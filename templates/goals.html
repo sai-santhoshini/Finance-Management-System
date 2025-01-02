@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            <h1>{{ username }}</h1>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li> 
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Add a New Goal</h1>
+        <form method="POST">
+            <label for="goal-name">Goal Name:</label>
+            <input type="text" id="goal-name" name="goal_name" placeholder="Goal Name" required>
+
+            <label for="target-amount">Target Amount:</label>
+            <input type="number" step="0.01" id="target-amount" name="target_amount" placeholder="Target Amount" required>
+
+            <button type="submit">Add Goal</button>
+        </form>
+
+        <h2>Your Goals</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Goal Name</th>
+                    <th>Target Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for goal in goals %}
+                <tr>
+                    <td>{{ goal.goal_name }}</td>
+                    <td>${{ "%.2f" % goal.target_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

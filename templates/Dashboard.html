@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script>
+        function togglePopup() {
+            const popup = document.getElementById('notifications-popup');
+            popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li>
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+    <div class="dashboard-container">
+        <div class="top-bar">
+            <button class="notifications-button" onclick="togglePopup()">Notifications</button>
+        </div>
+        <h1>Welcome to Your Dashboard!</h1>
+        <div class="dashboard-overview">
+            <div class="overview-item">
+                <h2>Total Balance</h2>
+                <p>${{ "%.2f" % total_balance }}</p>
+            </div>
+            <div class="overview-item">
+                <h2>Number of Bills to Be Paid</h2>
+                <p>{{ bills_to_pay }}</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="notifications-popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h2>Notifications</h2>
+            
+            <!-- Display upcoming bills -->
+            <h3>Upcoming Bills</h3>
+            <ul>
+                {% for bill in upcoming_bills %}
+                <li>
+                    <strong>{{ bill.bill_name }}</strong> - Due on {{ bill.due_date }} (Amount: {{ bill.amount }})
+                </li>
+                {% endfor %}
+                {% if not upcoming_bills %}
+                <li>No bills due in the next 2 days.</li>
+                {% endif %}
+            </ul>
+    
+            <!-- Display goals achieved -->
+            <h3>Goals Achieved</h3>
+            <ul>
+                {% for goal in goals_achieved %}
+                <li>
+                    <strong>{{ goal.goal_name }}</strong> has been achieved! (Target: ${{ "%.2f" % goal.target_amount }})
+                </li>
+                {% endfor %}
+                {% if not goals_achieved %}
+                <li>No goals have been achieved yet.</li>
+                {% endif %}
+            </ul>
+    
+            <button onclick="togglePopup()">Close</button>
+        </div>
+    </div>
+    
+</body>
+</html>

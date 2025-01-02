@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balances</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li> 
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+    
+    <h1>Your Accounts</h1>
+    <ul>
+        {% for account in accounts %}
+        <li>{{ account.account_name }} - {{ account.card_number }} - Balance: ${{ "%.2f" % account.balance }}</li>
+        {% endfor %}
+    </ul>
+
+    <  <!-- Display the total balance here -->
+
+    <h2>Add Account</h2>
+    <form method="POST">
+        <input type="text" name="account_name" placeholder="Name" required>
+        <input type="text" name="card_number" placeholder="Card Number" required>
+        <input type="number" step="0.01" name="balance" placeholder="Initial Balance" required>
+        <button type="submit">Add Account</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="menu">
+            <h1>{{ username }}</h1>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('balances') }}">Balances</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
+            <li><a href="{{ url_for('bills') }}">Bills</a></li> 
+            <li><a href="{{ url_for('expenses') }}">Expenses</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Transactions</h1>
+        <h2>Add New Transaction</h2>
+        <form method="POST">
+            <label for="account-id">Account:</label>
+            <select name="account_id" id="account-id" required>
+                {% for account in accounts %}
+                <option value="{{ account.id }}">{{ account.account_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="amount">Amount:</label>
+            <input type="number" name="amount" id="amount" step="0.01" placeholder="Amount" required>
+
+            <label for="type">Type:</label>
+            <select name="type" id="type" required>
+                <option value="Debit">Debit</option>
+                <option value="Credit">Credit</option>
+            </select>
+
+            <label for="category">Category:</label>
+            <select name="category" id="category" required>
+                <option value="Expenses">Expenses</option>
+                <option value="Income">Income</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" required>
+
+            <button type="submit">Add Transaction</button>
+        </form>
+
+        <h2>List of Transactions</h2>
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.account_id }}</td>
+                    <td>{{ "%.2f" % transaction.amount }}</td>
+                    <td>{{ transaction.type }}</td>
+                    <td>{{ transaction.category }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,362 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row; 
+    width: 100%; 
+    max-width: 3000px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.login-section, .signup-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    width: 1000;
+}
+
+.login-section {
+    background-color: grey;
+    color: white;
+}
+
+.signup-section {
+    background-color: white;
+    color: white;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.login-section button {
+    background-color: black;
+    color: white;
+}
+
+.login-section button:hover {
+    background-color: grey;
+    color: black;
+}
+
+.signup-section button {
+    background-color: black;
+    color: grey;
+    border: 1px solid grey;
+}
+
+.signup-section button:hover {
+    background-color: white;
+    color: white;
+}
+
+
+
+
+
+
+
+
+.sidebar {
+    background-color: grey;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar h1 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .menu li {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.sidebar .menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+.sidebar .menu .active {
+    background-color: grey;
+}
+
+
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header .greeting h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.header .greeting p {
+    margin: 5px 0 0;
+    color: whitesmoke;
+}
+
+.header .search-bar {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.header .notification-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .add-account {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.content .add-account:hover {
+    background-color: grey;
+}
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+
+.dashboard-container {
+    flex: 1;
+    padding: 30px;
+    background-color: #ecf0f1;
+    margin-left: 250px; 
+    min-height: 100vh;
+}
+
+.dashboard-container h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+
+.box-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+
+.box {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px); 
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+.box h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.box p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Notifications Button */
+.notifications-button {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    width: 120px; 
+    height: 30px; 
+    cursor: pointer;
+    font-size: 14px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+
+.notifications-button:hover {
+    background-color: grey;
+}
+
+/* Notifications Popup */
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.popup-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-content h2 {
+    margin-bottom: 15px;
+}
+
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content ul li {
+    margin: 5px 0;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: grey;
+}
+
+
+.flash-messages .alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.flash-messages .alert.danger {
+    background-color: #f44336; /* Red */
+}
+
+.flash-messages .alert.success {
+    background-color: #4CAF50; /* Green */
+}
